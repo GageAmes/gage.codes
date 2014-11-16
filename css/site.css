@@ -1,0 +1,22 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-color: rgb(126, 196, 33);
+}
+
+#logo {
+  height: 50%;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+
+  background-image: url(../images/ga.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
