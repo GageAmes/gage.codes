@@ -1,0 +1,66 @@
+body {
+  background-color: rgb(33, 33, 33);
+}
+
+#grid {
+  margin: 4px auto;
+  max-width: 512px;
+}
+
+.tile {
+  background-color: rgb(126, 196, 33);
+  border: 10px solid transparent;
+  margin: 4px;
+  width: 100px;
+  height: 100px;
+  float: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.tile.small {
+  width: 36px;
+  height: 36px;
+}
+
+.tile.medium {
+  width: 100px;
+  height: 100px;
+}
+
+.tile.wide {
+  width: 228px;
+  height: 100px;
+}
+
+.tile.large {
+  width: 228px;
+  height: 228px;
+}
+
+.tile > .front {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.tile > .back {
+  height: 100%;
+  width: 100%;
+  display: none;
+  position: absolute;
+}
+
+#gage-tile > .front {
+  background-image: url(../images/ga.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#github-tile > .front {
+  background-image: url(../images/github.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
