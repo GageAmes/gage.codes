@@ -20,10 +20,16 @@ class Tile extends React.Component {
 
   componentDidMount() {
     if (this.props.shouldFlip && this.props.flipInterval > 0) {
-      setInterval(function() {
+      this.tileInterval = setInterval(function() {
         this.flipTile();
       }.bind(this),
       this.props.flipInterval);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.tileInterval !== undefined) {
+      clearInterval(this.tileInterval);
     }
   }
 
