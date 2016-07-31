@@ -8,6 +8,7 @@ class Tile extends React.Component {
     this.state = {
         isFront: true
     };
+    this.defaultFlipInterval = 5000 + (Math.random() * 55000);
   }
 
   flipTile() {
@@ -18,19 +19,35 @@ class Tile extends React.Component {
     }
   }
 
-  componentDidMount() {
-    if (this.props.shouldFlip && this.props.flipInterval > 0) {
+  updateTileInterval() {
+    this.clearTileInterval();
+    if (this.props.shouldFlip && this.props.flipInterval !== 0) {
       this.tileInterval = setInterval(function() {
         this.flipTile();
       }.bind(this),
-      this.props.flipInterval);
+      this.props.flipInterval !== undefined ? this.props.flipInterval : this.defaultFlipInterval);
+    }
+  }
+
+  clearTileInterval() {
+    if (this.tileInterval !== undefined) {
+      clearInterval(this.tileInterval);
+      this.tileInterval = undefined;
+    }
+  }
+
+  componentDidMount() {
+    this.updateTileInterval();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.tileInterval !== prevProps.tileInterval) {
+      this.updateTileInterval();
     }
   }
 
   componentWillUnmount() {
-    if (this.tileInterval !== undefined) {
-      clearInterval(this.tileInterval);
-    }
+    this.clearTileInterval();
   }
 
   render() {
@@ -55,7 +72,7 @@ Tile.SIZE = Object.freeze({
 Tile.defaultProps = {
   size: Tile.SIZE.MEDIUM,
   shouldFlip: true,
-  flipInterval: 5000 + (Math.random() * 5000)
+  flipInterval: undefined
 };
 
 Tile.propTypes = {
