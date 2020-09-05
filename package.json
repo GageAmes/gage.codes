@@ -27,7 +27,7 @@
     "webpack-stream": "^2.1.0"
   },
   "dependencies": {
-    "react": "^0.13.3",
+    "react": "^15.6.2",
     "react-router": "^0.13.3"
   }
 }
